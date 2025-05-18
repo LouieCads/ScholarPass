@@ -5,14 +5,14 @@ import { useAccount, useDisconnect } from "wagmi";
 import Link from "next/link";
 import { Button } from "@/components/ui/button"; 
 import { Construction } from "lucide-react"; 
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import HowItWorks from "./components/HowItWorks";
-import Benefits from "./components/Benefits";
-import Leaderboard from "./components/Leaderboard";
-import Sponsors from "./components/Sponsors";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import HowItWorks from "../components/HowItWorks";
+import Benefits from "../components/Benefits";
+import Leaderboard from "../components/Leaderboard";
+import Sponsors from "../components/Sponsors";
+import FAQ from "../components/FAQ";
+import Footer from "../components/Footer";
 import {
   Dialog,
   DialogContent,

@@ -43,7 +43,7 @@ export function App({ children }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          modalSize="compact"
+          // modalSize="compact"
           theme={lightTheme({
             accentColorForeground: "#0054a6",
             borderRadius: "medium",

@@ -39,7 +39,7 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" className="section bg-white pt-24 pb-32">
-      <div className="container mx-auto px-8 md:px-12 lg:px-36">
+      <div className="container mx-auto px-4 md:px-12 lg:px-36">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="mb-4 text-4xl font-bold bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text">
             How ScholarPass Works

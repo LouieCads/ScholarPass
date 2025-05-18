@@ -89,7 +89,7 @@ export default function Leaderboard() {
     });
   };
 
-  // Simulate live updates every 1.5 seconds
+  // Simulate live updates every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       shuffleLeaderboard();
@@ -132,25 +132,25 @@ export default function Leaderboard() {
   };
 
   return (
-    <section id="leaderboard" className="section bg-white pt-30 pb-25">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="mb-4 text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text">
+    <section id="leaderboard" className="py-8 md:py-12 bg-white">
+      <div className="container px-3 md:px-4 mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-6 md:mb-10">
+          <h2 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text">
             Scholar Leaderboard
           </h2>
-          <p className="text-lg text-[#0054a6]/70">
+          <p className="text-base md:text-lg text-[#0054a6]/70 px-2">
             Our transparent ranking system showcases top-performing Filipino
             students based on verified academic achievements.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-4xl">
           {/* Leaderboard Header */}
-          <div className="bg-[#0077e6] text-white rounded-t-xl p-4 md:p-6 flex items-center justify-between">
-            <h3 className="font-bold text-xl md:text-2xl">Top Scholars</h3>
+          <div className="bg-[#0077e6] text-white rounded-t-xl p-3 md:p-6 flex items-center justify-between">
+            <h3 className="font-bold text-lg md:text-xl lg:text-2xl">Top Scholars</h3>
             <div className="flex items-center gap-2">
-              <span className="text-[#e0f0ff]">May 2025</span>
-              <div className="w-3 h-3 rounded-full bg-[#fbbf24]"></div>
+              <span className="text-sm md:text-base text-[#e0f0ff]">May 2025</span>
+              <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#fbbf24]"></div>
             </div>
           </div>
 
@@ -160,20 +160,20 @@ export default function Leaderboard() {
               <table className="w-full">
                 <thead className="bg-[#f0f7ff]">
                   <tr>
-                    <th className="py-4 px-4 text-left text-[#0054a6]">
+                    <th className="py-2 md:py-4 px-2 md:px-4 text-left text-xs md:text-sm font-medium text-[#0054a6]">
                       Rank
                     </th>
-                    <th className="py-4 px-4 text-left text-[#0054a6]">
+                    <th className="py-2 md:py-4 px-2 md:px-4 text-left text-xs md:text-sm font-medium text-[#0054a6]">
                       Scholar
                     </th>
-                    <th className="py-4 px-4 text-left text-[#0054a6] hidden md:table-cell">
+                    <th className="py-2 md:py-4 px-2 md:px-4 text-left text-xs md:text-sm font-medium text-[#0054a6] hidden md:table-cell">
                       School
                     </th>
-                    <th className="py-4 px-4 text-left text-[#0054a6]">
+                    <th className="py-2 md:py-4 px-2 md:px-4 text-left text-xs md:text-sm font-medium text-[#0054a6]">
                       Wallet
                     </th>
-                    <th className="py-4 px-4 text-right text-[#0054a6]">
-                      Scholar Score
+                    <th className="py-2 md:py-4 px-2 md:px-4 text-right text-xs md:text-sm font-medium text-[#0054a6]">
+                      Score
                     </th>
                   </tr>
                 </thead>
@@ -182,7 +182,7 @@ export default function Leaderboard() {
                     {leaderboardData.map((scholar, index) => (
                       <motion.tr
                         key={scholar.rank}
-                        custom={index} // Pass index for staggered animations
+                        custom={index}
                         variants={rowVariants}
                         initial="hidden"
                         animate="visible"
@@ -201,23 +201,23 @@ export default function Leaderboard() {
                             : "hover:bg-[#f0f7ff]"
                         }`}
                       >
-                        <td className="py-4 px-4">
-                          <div className="w-8 h-8 rounded-full bg-[#e0f0ff] flex items-center justify-center">
+                        <td className="py-2 md:py-4 px-2 md:px-4">
+                          <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#e0f0ff] flex items-center justify-center">
                             {getRankIcon(scholar.rank)}
                           </div>
                         </td>
-                        <td className="py-4 px-4 font-medium text-[#0054a6]">
+                        <td className="py-2 md:py-4 px-2 md:px-4 font-medium text-[#0054a6] text-sm md:text-base">
                           {scholar.name}
                         </td>
-                        <td className="py-4 px-4 text-[#0061c2]/80 hidden md:table-cell">
+                        <td className="py-2 md:py-4 px-2 md:px-4 text-[#0061c2]/80 text-sm md:text-base hidden md:table-cell">
                           {scholar.school}
                         </td>
-                        <td className="py-4 px-4 text-[#0061c2]/80">
-                          <span className="font-mono text-sm bg-[#e0f0ff] px-2 py-1 rounded">
+                        <td className="py-2 md:py-4 px-2 md:px-4 text-[#0061c2]/80">
+                          <span className="font-mono text-xs md:text-sm bg-[#e0f0ff] px-1 md:px-2 py-1 rounded">
                             {shortenAddress(scholar.walletAddress)}
                           </span>
                         </td>
-                        <td className="py-4 px-4 text-right font-bold text-[#f59e0b]">
+                        <td className="py-2 md:py-4 px-2 md:px-4 text-right font-bold text-[#f59e0b] text-sm md:text-base">
                           {scholar.score}
                         </td>
                       </motion.tr>
@@ -227,8 +227,13 @@ export default function Leaderboard() {
               </table>
             </div>
 
-            <div className="p-4 border-t border-[#e0f0ff] flex justify-center">
-              <Button variant="outline" onClick={() => setIsDialogOpen(true)} size="sm">
+            <div className="p-3 md:p-4 border-t border-[#e0f0ff] flex justify-center">
+              <Button 
+                variant="outline" 
+                onClick={() => setIsDialogOpen(true)} 
+                size="sm"
+                className="text-xs md:text-sm"
+              >
                 View Full Leaderboard
               </Button>
             </div>
@@ -238,25 +243,25 @@ export default function Leaderboard() {
 
       {/* Coming Soon Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-white rounded-lg shadow-xl">
+        <DialogContent className="w-[90%] max-w-[425px] bg-white rounded-lg shadow-xl p-4 md:p-6">
           <DialogHeader className="text-center">
-            <div className="flex justify-center mb-4">
-              <Construction className="w-12 h-12 text-amber-500 animate-pulse" />
+            <div className="flex justify-center mb-3 md:mb-4">
+              <Construction className="w-10 h-10 md:w-12 md:h-12 text-amber-500 animate-pulse" />
             </div>
-            <DialogTitle className="text-2xl text-center font-bold text-[#0054a6]">
+            <DialogTitle className="text-xl md:text-2xl text-center font-bold text-[#0054a6]">
               Coming Soon!
             </DialogTitle>
-            <DialogDescription className="text-[#0061c2]/80 mt-2">
+            <DialogDescription className="text-[#0061c2]/80 mt-2 text-sm md:text-base">
               Leaderboard is not yet available. These are only MOCK data.
               We're building this feature to bring you the best Web3 
               scholarship experience. Stay tuned for updates!
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter className="mt-6">
+          <DialogFooter className="mt-4 md:mt-6">
             <Button
               variant="outline"
               onClick={() => setIsDialogOpen(false)}
-              className="w-full border-[#1e96ff] text-[#0077e6] hover:bg-[#e0f0ff]"
+              className="w-full border-[#1e96ff] text-[#0077e6] hover:bg-[#e0f0ff] text-sm md:text-base"
             >
               Got It
             </Button>
