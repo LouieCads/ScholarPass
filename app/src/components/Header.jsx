@@ -41,7 +41,7 @@ export default function Header() {
           : "bg-transparent py-4"
       )}
     >
-      <div className="container mx-auto px-2 sm:px-10 md:px-38 flex items-center justify-between">
+      <div className="container mx-auto pl-2 pr-4 sm:px-10 md:px-38 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
