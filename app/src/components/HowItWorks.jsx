@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GraduationCap, Award, Badge, Key, BookOpen, Zap, Star } from "lucide-react";
 
 export default function HowItWorks() {
   const steps = [
     {
-      icon: (
-        <GraduationCap className="w-10 h-10" style={{ color: "#2563eb" }} />
-      ),
+      icon: <GraduationCap className="w-10 h-10" style={{ color: "#2563eb" }} />,
       title: "Mint a ScholarPass NFT",
       description:
         "Students join the platform by minting their unique ScholarPass NFT, which becomes their digital academic identity on the blockchain.",
@@ -37,10 +35,42 @@ export default function HowItWorks() {
     },
   ];
 
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false); // Reset visibility when out of view
+        }
+      },
+      {
+        threshold: 0.2, // Trigger when 20% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="how-it-works" className="section bg-white pt-24 pb-32">
+    <section id="how-it-works" className="section bg-white pt-24 pb-32" ref={sectionRef}>
       <div className="container mx-auto px-4 md:px-12 lg:px-36">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div
+          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-1500 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40"
+          }`}
+        >
           <h2 className="mb-4 text-4xl font-bold bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text">
             How ScholarPass Works
           </h2>
@@ -52,7 +82,7 @@ export default function HowItWorks() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <FlipCard key={index} step={step} index={index} />
+            <FlipCard key={index} step={step} index={index} isVisible={isVisible} />
           ))}
         </div>
       </div>
@@ -60,17 +90,20 @@ export default function HowItWorks() {
   );
 }
 
-function FlipCard({ step, index }) {
+function FlipCard({ step, index, isVisible }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div 
-      className="h-64 w-full perspective-1000"
+    <div
+      className={`h-64 w-full perspective-1000 transition-all duration-900 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-45"
+      }`}
+      style={{ transitionDelay: `${200 + index * 150}ms` }}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
-      <div 
-        className={`relative w-full h-full duration-500 preserve-3d ${isFlipped ? 'rotate-y-180' : ''}`}
+      <div
+        className={`relative w-full h-full duration-500 preserve-3d ${isFlipped ? "rotate-y-180" : ""}`}
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-xl p-8 shadow-lg border border-blue-100 flex flex-col items-center text-center">
@@ -97,7 +130,7 @@ function FlipCard({ step, index }) {
             </h3>
           </div>
         </div>
-        
+
         {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl px-8 py-5 shadow-lg border border-blue-200 flex flex-col items-center justify-center text-center">
           <div className="absolute top-2 left-2 opacity-20">

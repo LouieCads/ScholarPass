@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Trophy, Award, Medal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +16,9 @@ import {
 
 export default function Leaderboard() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   const initialData = [
     {
       rank: 1,
@@ -60,17 +62,13 @@ export default function Leaderboard() {
     },
   ];
 
-  // State to manage dynamic leaderboard data
   const [leaderboardData, setLeaderboardData] = useState(initialData);
 
-  // Function to shuffle non-rank fields while keeping rank and score constant
   const shuffleLeaderboard = () => {
     setLeaderboardData((prevData) => {
       const newData = [...prevData];
-      // Shuffle non-rank fields (name, school, walletAddress)
       for (let i = newData.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        // Swap name, school, and walletAddress, but keep rank and score
         [newData[i].name, newData[j].name] = [newData[j].name, newData[i].name];
         [newData[i].school, newData[j].school] = [
           newData[j].school,
@@ -80,21 +78,43 @@ export default function Leaderboard() {
           newData[j].walletAddress,
           newData[i].walletAddress,
         ];
-        // Update highlight for top rank (rank 1)
         newData[i].highlight = newData[i].rank === 1;
         newData[j].highlight = newData[j].rank === 1;
       }
-      // No sorting needed since ranks are constant
       return newData;
     });
   };
 
-  // Simulate live updates every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       shuffleLeaderboard();
     }, 2000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   const getRankIcon = (rank) => {
@@ -110,11 +130,6 @@ export default function Leaderboard() {
     }
   };
 
-  const shortenAddress = (address) => {
-    return address;
-  };
-
-  // Animation variants for table rows with smoother transitions
   const rowVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i) => ({
@@ -125,16 +140,20 @@ export default function Leaderboard() {
         stiffness: 100,
         damping: 20,
         opacity: { duration: 0.4 },
-        delay: i * 0.1, // Stagger animations for a cascading effect
+        delay: i * 0.1,
       },
     }),
     exit: { opacity: 0, y: -10, transition: { duration: 0.3 } },
   };
 
   return (
-    <section id="leaderboard" className="py-8 md:py-12 bg-white">
+    <section id="leaderboard" className="py-8 md:py-22 bg-white" ref={sectionRef}>
       <div className="container px-3 md:px-4 mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-6 md:mb-10">
+        <div
+          className={`text-center max-w-2xl mx-auto mb-6 md:mb-10 transition-opacity transition-transform duration-1000 ease-out ${
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
           <h2 className="mb-2 md:mb-4 text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text">
             Scholar Leaderboard
           </h2>
@@ -145,8 +164,12 @@ export default function Leaderboard() {
         </div>
 
         <div className="mx-auto max-w-4xl">
-          {/* Leaderboard Header */}
-          <div className="bg-[#0077e6] text-white rounded-t-xl p-3 md:p-6 flex items-center justify-between">
+          <div
+            className={`bg-[#0077e6] text-white rounded-t-xl p-3 md:p-6 flex items-center justify-between transition-opacity transition-transform duration-1000 ease-out ${
+              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
             <h3 className="font-bold text-lg md:text-xl lg:text-2xl">Top Scholars</h3>
             <div className="flex items-center gap-2">
               <span className="text-sm md:text-base text-[#e0f0ff]">May 2025</span>
@@ -154,7 +177,6 @@ export default function Leaderboard() {
             </div>
           </div>
 
-          {/* Leaderboard Table */}
           <div className="bg-white rounded-b-xl border border-t-0 border-[#e0f0ff] overflow-hidden shadow-lg">
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -199,7 +221,10 @@ export default function Leaderboard() {
                           scholar.highlight
                             ? "bg-[#fffbeb]"
                             : "hover:bg-[#f0f7ff]"
+                        } transition-opacity transition-transform duration-900 ease-out ${
+                          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                         }`}
+                        style={{ transitionDelay: `${300 + index * 150}ms` }}
                       >
                         <td className="py-2 md:py-4 px-2 md:px-4">
                           <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#e0f0ff] flex items-center justify-center">
@@ -214,7 +239,7 @@ export default function Leaderboard() {
                         </td>
                         <td className="py-2 md:py-4 px-2 md:px-4 text-[#0061c2]/80">
                           <span className="font-mono text-xs md:text-sm bg-[#e0f0ff] px-1 md:px-2 py-1 rounded">
-                            {shortenAddress(scholar.walletAddress)}
+                            {scholar.walletAddress}
                           </span>
                         </td>
                         <td className="py-2 md:py-4 px-2 md:px-4 text-right font-bold text-[#f59e0b] text-sm md:text-base">
@@ -227,10 +252,15 @@ export default function Leaderboard() {
               </table>
             </div>
 
-            <div className="p-3 md:p-4 border-t border-[#e0f0ff] flex justify-center">
-              <Button 
-                variant="outline" 
-                onClick={() => setIsDialogOpen(true)} 
+            <div
+              className={`p-3 md:p-4 border-t border-[#e0f0ff] flex justify-center transition-opacity transition-transform duration-900 ease-out ${
+                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+              style={{ transitionDelay: "800ms" }}
+            >
+              <Button
+                variant="outline"
+                onClick={() => setIsDialogOpen(true)}
                 size="sm"
                 className="text-xs md:text-sm"
               >
@@ -241,7 +271,6 @@ export default function Leaderboard() {
         </div>
       </div>
 
-      {/* Coming Soon Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="w-[90%] max-w-[425px] bg-white rounded-lg shadow-xl p-4 md:p-6">
           <DialogHeader className="text-center">
@@ -253,7 +282,7 @@ export default function Leaderboard() {
             </DialogTitle>
             <DialogDescription className="text-[#0061c2]/80 mt-2 text-sm md:text-base">
               Leaderboard is not yet available. These are only MOCK data.
-              We're building this feature to bring you the best Web3 
+              We're building this feature to bring you the best Web3
               scholarship experience. Stay tuned for updates!
             </DialogDescription>
           </DialogHeader>
