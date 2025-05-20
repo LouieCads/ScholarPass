@@ -148,7 +148,7 @@ export default function Leaderboard() {
 
   return (
     <section id="leaderboard" className="py-8 md:py-22 bg-white" ref={sectionRef}>
-      <div className="container px-3 md:px-4 mx-auto">
+      <div className="container px-2 md:px-4 mx-auto">
         <div
           className={`text-center max-w-2xl mx-auto mb-6 md:mb-10 transition-opacity transition-transform duration-1000 ease-out ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"

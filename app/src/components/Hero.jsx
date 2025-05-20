@@ -9,8 +9,6 @@ export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Set isVisible to true after component mounts
-    // This triggers the fade-in animation
     setIsVisible(true);
   }, []);
 
@@ -22,7 +20,7 @@ export default function Hero() {
         <div className="absolute top-1/2 -left-16 w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64 bg-[#d6eaff] rounded-full opacity-60 blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-2 sm:px-6 relative z-10">
         <div 
           className={`max-w-3xl mx-auto text-center mb-10 sm:mb-12 opacity-0 transform -translate-y-16 transition-all duration-1000 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : ""

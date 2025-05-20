@@ -46,10 +46,10 @@ export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="section bg-gradient-to-br from-[#004080] to-[#0054a6] text-white"
+      className="section overflow-x-hidden bg-gradient-to-br from-[#004080] to-[#0054a6] text-white"
       ref={sectionRef}
     >
-      <div className="container mx-auto px-3 sm:px-15 md:px-38 py-10 sm:py-16 md:py-25">
+      <div className="container mx-auto px-2 sm:px-15 md:px-38 py-10 sm:py-16 md:py-25">
         <div
           className={`text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40"

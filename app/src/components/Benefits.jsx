@@ -35,10 +35,10 @@ export default function Benefits() {
   return (
     <section
       id="benefits"
-      className="section bg-gradient-to-br from-[#f0f7ff] to-white px-2 sm:px-15 md:px-38 py-12 sm:py-16 md:py-35"
+      className="section bg-gradient-to-br from-[#f0f7ff] to-white px-4 sm:px-15 md:px-38 py-12 sm:py-16 md:py-35"
       ref={sectionRef}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div
           className={`text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16 transition-all duration-1500 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40"
