@@ -35,13 +35,13 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 px-2 sm:px-8 md:px-32 lg:px-36 transition-all duration-300",
         isScrolled
           ? "bg-white shadow-md py-3 border-b border-gray-100"
           : "bg-transparent py-4"
       )}
     >
-      <div className="container mx-auto px-2 sm:px-10 md:px-38 flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -52,14 +52,14 @@ export default function Header() {
             className="w-11 h-11 sm:w-18 sm:h-15"
             priority
           />
-          <span className="text-xl sm:text-2xl font-bold text-blue-900">
+          <span className="text-xl sm:text-xl md:text-2xl font-bold text-blue-900">
             Scholar<span className="text-[#f59e0b]">Pass</span>
           </span>
         </Link>
 
         {/* Desktop Navigation - Centered */}
         <nav className="hidden md:flex flex-grow justify-center">
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center sm:space-x-3 md:space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

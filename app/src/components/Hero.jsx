@@ -13,7 +13,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative pt-16 pb-16 sm:pt-24 sm:pb-24 md:pt-32 md:pb-28 overflow-hidden bg-gradient-to-br from-[#f0f7ff] to-white">
+    <section className="relative pt-21 pb-16 sm:pt-25 sm:pb-24 md:pt-32 md:pb-28 overflow-hidden bg-gradient-to-br from-[#f0f7ff] to-white">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-16 -right-16 w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64 bg-[#fff4cc] rounded-full opacity-60 blur-3xl"></div>
