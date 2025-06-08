@@ -64,7 +64,7 @@ export default function Benefits() {
               Earn Scholarships Through Merit
             </h3>
             <p className="text-sm sm:text-base text-[#0061c2]/80">
-              Build a Scholar Score from verified achievements to attract scholarship opportunities tailored to your strengths.
+              Build credentials from verified achievements to attract scholarship opportunities tailored to your strengths.
             </p>
           </div>
 

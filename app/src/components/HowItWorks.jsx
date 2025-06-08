@@ -41,7 +41,7 @@ export default function HowItWorks() {
     {
       icon: <Upload className="w-10 h-10" style={{ color: "#2563eb" }} />,
       title: "Upload Credentials",
-      description: "Submit your academic transcripts, certificates, awards, and achievements to build your verified Scholar Score."
+      description: "Submit your academic transcripts, certificates, awards, and achievements to build your credentials."
     },
     {
       icon: <Trophy className="w-10 h-10" style={{ color: "#2563eb" }} />,

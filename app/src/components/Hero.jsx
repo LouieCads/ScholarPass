@@ -36,7 +36,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-[#1e3a8a]/80 mb-6 sm:mb-8">
-            ScholarPass empowers Filipino students to earn scholarships by applying to sponsor-posted programs, uploading verified academic achievements, and building a Scholar Score. 
+            ScholarPass empowers Filipino students to earn scholarships by applying to sponsor-posted programs, uploading verified academic achievements, and building their credentials. 
           </p>
         </div>
 
