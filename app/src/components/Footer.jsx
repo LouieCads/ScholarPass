@@ -10,7 +10,6 @@ export default function Footer() {
     { href: "#", label: "Home" },
     { href: "#how-it-works", label: "How It Works" },
     { href: "#benefits", label: "Benefits" },
-    { href: "#mint", label: "Mint ScholarPass NFT" },
     { href: "#leaderboard", label: "Leaderboard" },
     { href: "#sponsors", label: "Sponsor" },
     { href: "#faq", label: "FAQs" },
@@ -18,7 +17,6 @@ export default function Footer() {
 
   // Students Links Data
   const studentLinks = [
-    { href: "#mint", label: "Mint ScholarPass" },
     { href: "#", label: "Submit Grades" },
     { href: "#", label: "Scholar Dashboard" },
     { href: "#", label: "Scholarship Guide" },
@@ -31,7 +29,6 @@ export default function Footer() {
     { href: "#", label: "Corporate Partnerships" },
     { href: "#", label: "Impact Reports" },
     { href: "#", label: "Sponsor Dashboard" },
-    { href: "#", label: "Success Stories" },
   ];
 
   // Social Media Links Data

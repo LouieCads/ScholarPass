@@ -1,40 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { GraduationCap, Award, Badge, Key, BookOpen, Zap, Star } from "lucide-react";
+import { CheckCircle, Upload, Trophy, Zap, Star, GraduationCap } from "lucide-react";
 
 export default function HowItWorks() {
-  const steps = [
-    {
-      icon: <GraduationCap className="w-10 h-10" style={{ color: "#2563eb" }} />,
-      title: "Mint a ScholarPass NFT",
-      description:
-        "Students join the platform by minting their unique ScholarPass NFT, which becomes their digital academic identity on the blockchain.",
-      backIcons: [<BookOpen className="w-6 h-6 text-blue-300" />, <Star className="w-5 h-5 text-yellow-400" />]
-    },
-    {
-      icon: <Badge className="w-10 h-10" style={{ color: "#2563eb" }} />,
-      title: "Submit Academic Records",
-      description:
-        "Upload your grades and academic achievements to build your verifiable Scholar Score, showcasing your commitment to education.",
-      backIcons: [<Zap className="w-6 h-6 text-blue-300" />, <Star className="w-5 h-5 text-yellow-400" />]
-    },
-    {
-      icon: <Award className="w-10 h-10" style={{ color: "#2563eb" }} />,
-      title: "Advance on the Leaderboard",
-      description:
-        "As your Scholar Score increases, rise through the ranks on our transparent leaderboard, visible to sponsors and the community.",
-      backIcons: [<BookOpen className="w-6 h-6 text-blue-300" />, <Star className="w-5 h-5 text-yellow-400" />]
-    },
-    {
-      icon: <Key className="w-10 h-10" style={{ color: "#2563eb" }} />,
-      title: "Achieve Scholarship Awards",
-      description:
-        "Connect with sponsors who can provide tokens or NFTs to support your education and academic journey.",
-      backIcons: [<Zap className="w-6 h-6 text-blue-300" />, <Star className="w-5 h-5 text-yellow-400" />]
-    },
-  ];
-
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -44,11 +13,11 @@ export default function HowItWorks() {
         if (entry.isIntersecting) {
           setIsVisible(true);
         } else {
-          setIsVisible(false); // Reset visibility when out of view
+          setIsVisible(false);
         }
       },
       {
-        threshold: 0.2, // Trigger when 20% of the section is visible
+        threshold: 0.2,
       }
     );
 
@@ -63,9 +32,54 @@ export default function HowItWorks() {
     };
   }, []);
 
+  const steps = [
+    {
+      icon: <CheckCircle className="w-10 h-10" style={{ color: "#2563eb" }} />,
+      title: "Sign Up & Verify",
+      description: "Create your ScholarPass account and complete identity verification to ensure authenticity and build trust with sponsors."
+    },
+    {
+      icon: <Upload className="w-10 h-10" style={{ color: "#2563eb" }} />,
+      title: "Upload Credentials",
+      description: "Submit your academic transcripts, certificates, awards, and achievements to build your verified Scholar Score."
+    },
+    {
+      icon: <Trophy className="w-10 h-10" style={{ color: "#2563eb" }} />,
+      title: "Get Ranked",
+      description: "Appear on our public leaderboard based on your academic performance and achievements for sponsors to discover."
+    },
+    {
+      icon: <GraduationCap className="w-10 h-10" style={{ color: "#2563eb" }} />,
+      title: "Receive Scholarships",
+      description: "Apply to programs or get directly contacted by sponsors who want to support your educational journey."
+    }
+  ];
+
+  const handleMouseMove = (e, cardRef) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const maxTilt = 10; // Maximum tilt angle in degrees
+    const tiltX = ((centerY - y) / centerY) * maxTilt;
+    const tiltY = ((x - centerX) / centerX) * maxTilt;
+
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+  };
+
+  const handleMouseLeave = (cardRef) => {
+    if (cardRef.current) {
+      cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+    }
+  };
+
   return (
     <section id="how-it-works" className="section bg-white pt-24 pb-32" ref={sectionRef}>
-      <div className="container mx-auto px-4 md:px-12 lg:px-36">
+      <div className="container mx-auto px-4 md:px-13 lg:px-38">
         <div
           className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-1500 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-40"
@@ -75,77 +89,67 @@ export default function HowItWorks() {
             How ScholarPass Works
           </h2>
           <p className="text-lg" style={{ color: "#0054a6", opacity: 0.7 }}>
-            A simple, transparent process that connects students with
-            scholarship opportunities through blockchain technology.
+            It makes simple for students to showcase their achievements and connect with
+            sponsors who believe in their potential.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
-            <FlipCard key={index} step={step} index={index} isVisible={isVisible} />
-          ))}
+          {steps.map((step, index) => {
+            const cardRef = useRef(null);
+
+            return (
+              <div
+                key={index}
+                className={`w-full h-[300px] transition-all duration-900 ease-out ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-45"
+                }`}
+                style={{ transitionDelay: `${200 + index * 150}ms` }}
+                onMouseMove={(e) => handleMouseMove(e, cardRef)}
+                onMouseLeave={() => handleMouseLeave(cardRef)}
+              >
+                <div
+                  ref={cardRef}
+                  className="relative w-full h-full bg-white rounded-xl p-6 shadow-lg border border-[#dbeafe] flex flex-col items-center text-center transition-transform duration-300 ease-out"
+                >
+                  <div
+                    className="absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center border-2 border-white"
+                    style={{ backgroundColor: "#fff8e1" }}
+                  >
+                    <span className="font-bold text-sm" style={{ color: "#d4af37" }}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div
+                    className="absolute top-2 left-2 opacity-20"
+                    style={{ transform: "rotate(-10deg)" }}
+                  >
+                    <Zap className="w-5 h-5" style={{ color: "#2563eb" }} />
+                  </div>
+                  <div
+                    className="absolute bottom-2 right-2 opacity-20"
+                    style={{ transform: "rotate(10deg)" }}
+                  >
+                    <Star className="w-4 h-4" style={{ color: "#d4af37" }} />
+                  </div>
+                  <div
+                    className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                    style={{ backgroundColor: "#dbeafe" }}
+                  >
+                    {step.icon}
+                  </div>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: "#1e3a8a" }}>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm md:text-base" style={{ color: "#0054a6", opacity: 0.7 }}>
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-  );
-}
-
-function FlipCard({ step, index, isVisible }) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  return (
-    <div
-      className={`h-64 w-full perspective-1000 transition-all duration-900 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-45"
-      }`}
-      style={{ transitionDelay: `${200 + index * 150}ms` }}
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
-    >
-      <div
-        className={`relative w-full h-full duration-500 preserve-3d ${isFlipped ? "rotate-y-180" : ""}`}
-      >
-        {/* Front of card */}
-        <div className="absolute w-full h-full backface-hidden bg-white rounded-xl p-8 shadow-lg border border-blue-100 flex flex-col items-center text-center">
-          <div
-            className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
-            style={{ backgroundColor: "#dbeafe" }}
-          >
-            {step.icon}
-          </div>
-          <div className="relative mb-4">
-            <div
-              className="absolute -left-3 -top-3 w-8 h-8 rounded-full flex items-center justify-center border-2 border-white"
-              style={{ backgroundColor: "#fff8e1" }}
-            >
-              <span className="font-bold" style={{ color: "#d4af37" }}>
-                {index + 1}
-              </span>
-            </div>
-            <h3
-              className="text-xl font-bold mt-3"
-              style={{ color: "#1e3a8a" }}
-            >
-              {step.title}
-            </h3>
-          </div>
-        </div>
-
-        {/* Back of card */}
-        <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl px-8 py-5 shadow-lg border border-blue-200 flex flex-col items-center justify-center text-center">
-          <div className="absolute top-2 left-2 opacity-20">
-            {step.backIcons[0]}
-          </div>
-          <div className="absolute bottom-2 right-2 opacity-20">
-            {step.backIcons[1]}
-          </div>
-          <p className="text-blue-800 font-medium text-lg mb-2">{step.title}</p>
-          <p className="text-blue-700">{step.description}</p>
-          <div className="absolute w-12 h-12 -bottom-1 opacity-10 rotate-12">
-            {step.icon}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }

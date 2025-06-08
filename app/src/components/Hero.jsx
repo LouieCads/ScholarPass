@@ -26,7 +26,7 @@ export default function Hero() {
             isVisible ? "opacity-100 translate-y-0" : ""
           }`}
         >
-          <h1 className="mb-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+          <h1 className="mb-6 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
             <span className="bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text">
               Empower Education
             </span>{" "}
@@ -36,30 +36,8 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-[#1e3a8a]/80 mb-6 sm:mb-8">
-            ScholarPass rewards Filipino students for academic achievement,
-            connecting them with sponsors to fund their education through
-            blockchain technology.
+            ScholarPass empowers Filipino students to earn scholarships by applying to sponsor-posted programs, uploading verified academic achievements, and building a Scholar Score. 
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <Link href="#mint">
-              <Button
-                size="lg"
-                className="bg-[#0077e6] text-white hover:bg-[#0054a6] shadow-lg flex items-center gap-2 text-sm sm:text-base w-full sm:w-auto"
-              >
-                <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
-                Mint a ScholarPass
-              </Button>
-            </Link>
-            <Link href="#sponsors">
-              <Button
-                size="lg"
-                className="shadow-lg flex items-center gap-2 text-sm sm:text-base w-full sm:w-auto"
-              >
-                <Award className="w-5 h-5 sm:w-6 sm:h-6" />
-                Sponsor a Student
-              </Button>
-            </Link>
-          </div>
         </div>
 
         {/* Hero image/illustration with staggered animation delay */}
@@ -80,9 +58,9 @@ export default function Hero() {
                   </h3>
                   <ul className="space-y-2 sm:space-y-3 text-[#e0f2fe]">
                     {[
-                      "Pay for tuition and school fees",
-                      "Buy books and school supplies",
-                      "Access internet for online learning",
+                      "Fund for tuition and academic expenses",
+                      "Get school supplies and learning materials",
+                      "Support access to digital resources",
                       "Create opportunities for all students"
                     ].map((item, index) => (
                       <li 
@@ -102,48 +80,56 @@ export default function Hero() {
                 </div>
 
                 <div className="flex items-center justify-center">
-                  <div 
-                    className={`relative w-full max-w-xs sm:max-w-sm opacity-0 transform -translate-y-16 transition-all duration-1200 ease-out delay-700 ${
-                      isVisible ? "opacity-100 translate-y-0" : ""
-                    }`}
-                  >
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-2xl transform -rotate-6"></div>
-                    <div className="bg-white rounded-2xl p-4 sm:p-5 md:p-6 transform rotate-3 relative z-10">
-                      <div className="flex justify-between items-center mb-3 sm:mb-4">
-                        <div>
-                          <h4 className="text-[#1e3a8a] font-bold text-base sm:text-lg">
-                            ScholarPass NFT
-                          </h4>
-                          <p className="text-xs text-gray-500">
-                            ID: #SP2023-1458
-                          </p>
-                        </div>
-                        <div className="p-2 bg-[#fef3c7] rounded-md">
-                          <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-[#facc15]" />
-                        </div>
-                      </div>
-                      <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
-                        <div>
-                          <p className="text-xs text-gray-500">Scholar</p>
-                          <p className="font-medium text-sm sm:text-base">Maria Santos</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-gray-500">School</p>
-                          <p className="font-medium text-sm sm:text-base">
-                            University of the Philippines
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-gray-500">Scholar Score</p>
-                          <p className="font-medium text-[#facc15] text-sm sm:text-base">92.5</p>
-                        </div>
-                      </div>
-                      <div className="bg-[#e0f2fe] p-2 rounded text-xs sm:text-sm text-center text-[#1d4ed8]">
-                        Verified Academic Achievement
-                      </div>
-                    </div>
-                  </div>
-                </div>
+  <div 
+    className={`relative w-full max-w-xs sm:max-w-sm opacity-0 transform -translate-y-16 transition-all duration-1200 ease-out delay-700 ${
+      isVisible ? "opacity-100 translate-y-0" : ""
+    }`}
+  >
+    <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-2xl transform -rotate-6"></div>
+    <div className="bg-white rounded-2xl p-4 sm:p-5 md:p-6 transform rotate-3 relative z-10">
+      <div className="flex justify-between items-center mb-3 sm:mb-4">
+        <div>
+          <h4 className="text-[#1e3a8a] font-bold text-base sm:text-lg">
+            ScholarPass
+          </h4>
+          <p className="text-xs text-gray-500">
+            ID: #SP2025-1458
+          </p>
+        </div>
+        <div className="p-2 bg-[#fef3c7] rounded-md">
+          <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-[#facc15]" />
+        </div>
+      </div>
+      <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
+        <div>
+          <p className="text-xs text-gray-500">Scholar</p>
+          <p className="font-medium text-sm sm:text-base">Maria Santos</p>
+        </div>
+        <div>
+          <p className="text-xs text-gray-500">School</p>
+          <p className="font-medium text-sm sm:text-base">
+            University of the Philippines
+          </p>
+        </div>
+        <div>
+          <p className="text-xs text-gray-500">Achievement</p>
+          <p className="font-medium text-sm sm:text-base">Valedictorian, 2025</p>
+        </div>
+      </div>
+      <div className="bg-[#e0f2fe] p-2 rounded text-xs sm:text-sm text-center text-[#1d4ed8]">
+        Verified Academic Achievement
+      </div>
+      <div className="mt-3">
+        <Button 
+          className="w-full bg-[#1e3a8a] text-white text-xs sm:text-sm opacity-60 cursor-not-allowed"
+          disabled
+        >
+          Apply for Scholarships
+        </Button>
+      </div>
+    </div>
+  </div>
+</div>  
               </div>
             </div>
           </div>

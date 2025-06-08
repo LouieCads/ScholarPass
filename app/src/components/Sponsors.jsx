@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Award } from "lucide-react";
-import { Construction } from "lucide-react";
+import { Construction, Award } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -28,7 +27,7 @@ export default function Sponsors() {
         }
       },
       {
-        threshold: 0.2, // Trigger when 20% of the section is visible
+        threshold: 0.2,
       }
     );
 
@@ -115,13 +114,6 @@ export default function Sponsors() {
                 </div>
               </li>
             </ul>
-            <Button
-              variant="secondary"
-              onClick={() => setIsDialogOpen(true)}
-              className="text-white text-sm sm:text-base font-bold px-4 sm:px-6 w-full sm:w-auto"
-            >
-              Become a Sponsor
-            </Button>
           </div>
 
           <div
@@ -196,6 +188,7 @@ export default function Sponsors() {
         </div>
       </div>
 
+      {/* Existing Sponsor Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-[425px] bg-white rounded-lg shadow-xl p-4 sm:p-6">
           <DialogHeader className="text-center">

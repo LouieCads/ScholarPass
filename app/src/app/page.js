@@ -46,7 +46,7 @@ function MainContent() {
       <Hero />
       <HowItWorks />
       <Benefits />
-      <section
+      {/* <section
         id="mint"
         className="bg-amber-500 py-19 overflow-hidden relative"
       >
@@ -69,7 +69,6 @@ function MainContent() {
           </div>
         </div>
 
-        {/* Coming Soon Dialog */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="sm:max-w-[425px] bg-white rounded-lg shadow-xl">
             <DialogHeader className="text-center">
@@ -96,7 +95,7 @@ function MainContent() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </section>
+      </section> */}
       <Leaderboard />
       <Sponsors />
       <FAQ />

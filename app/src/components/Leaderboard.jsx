@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { Trophy, Award, Medal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Construction } from "lucide-react";
+import { Construction, Users } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -18,6 +19,7 @@ export default function Leaderboard() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isStudentDialogOpen, setIsStudentDialogOpen] = useState(false); // New state for student dialog
 
   const initialData = [
     {
@@ -253,19 +255,25 @@ export default function Leaderboard() {
             </div>
 
             <div
-              className={`p-3 md:p-4 border-t border-[#e0f0ff] flex justify-center transition-opacity transition-transform duration-900 ease-out ${
+              className={`p-3 md:p-4 border-t border-b border-[#0077e6]/30 bg-[#e0f0ff]/50 rounded-md text-center hover:bg-[#bae1ff]/50 hover:scale-105 transition-all duration-500 ease-out ${
                 isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
-              style={{ transitionDelay: "800ms" }}
+              style={{ transitionDelay: "900ms" }}
             >
-              <Button
-                variant="outline"
-                onClick={() => setIsDialogOpen(true)}
-                size="sm"
-                className="text-xs md:text-sm"
-              >
-                View Full Leaderboard
-              </Button>
+              <span className="text-sm sm:text-base md:text-lg font-bold bg-gradient-to-r from-[#0054a6] to-[#0077e6] text-transparent bg-clip-text flex items-center justify-center gap-2">
+                <Trophy className="w-5 h-5 text-[#f59e0b] animate-pulse" />
+                Stand out, get discovered, and secure scholarship with ScholarPass!
+              </span>
+              <div className="mt-4 sm:mt-6">
+                <Button
+                  variant="outline"
+                  onClick={() => setIsStudentDialogOpen(true)}
+                  className="text-[#fbbf24] border-2 border-[#fbbf24] hover:bg-[#fbbf24]/20 hover:text-[#0054a6] font-bold text-sm sm:text-base px-6 sm:px-8 py-2 rounded-lg w-full sm:w-auto min-w-[200px] sm:min-w-[240px] transition-all duration-300 ease-in-out focus:ring-2 focus:ring-[#fbbf24] focus:ring-offset-2"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Join the Waitlist
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -294,6 +302,36 @@ export default function Leaderboard() {
             >
               Got It
             </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* New Student Waitlist Dialog */}
+      <Dialog open={isStudentDialogOpen} onOpenChange={setIsStudentDialogOpen}>
+        <DialogContent className="sm:max-w-[425px] bg-white rounded-lg shadow-xl p-4 sm:p-6">
+          <DialogHeader className="text-center">
+            <div className="flex justify-center mb-3 sm:mb-4">
+              <Users className="w-10 h-10 sm:w-12 sm:h-12 text-[#fbbf24]" />
+            </div>
+            <DialogTitle className="text-xl sm:text-2xl text-center font-bold text-[#0054a6]">
+              Join the Student Waitlist
+            </DialogTitle>
+            <DialogDescription className="text-sm sm:text-base text-[#0061c2]/80 mt-2">
+              Be the first to access scholarships and opportunities on ScholarPass. Sign up for our waitlist to stay updated!
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="mt-4 sm:mt-6">
+            <Link href="https://tally.so/r/nrbKP5" target="_blank" className="w-full" >
+              <Button
+                as="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="default"
+                className="w-full bg-[#fbbf24] text-[#0054a6] hover:bg-[#f59e0b]"
+              >
+                Register Now
+              </Button>
+            </Link>
           </DialogFooter>
         </DialogContent>
       </Dialog>

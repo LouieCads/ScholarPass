@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Scholar Pass",
-  description: "Web3 Education Scholarship Program",
+  title: "ScholarPass",
+  description: "Web3 Scholarship Program",
 };
 
 export default function RootLayout({ children }) {

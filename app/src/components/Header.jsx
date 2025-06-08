@@ -59,12 +59,12 @@ export default function Header() {
 
         {/* Desktop Navigation - Centered */}
         <nav className="hidden md:flex flex-grow justify-center">
-          <div className="flex items-center sm:space-x-3 md:space-x-6">
+          <div className="flex items-center sm:space-x-3 md:space-x-9">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-medium text-[#0054a6] hover:text-[#0077e6] text-sm md:text-base transition-colors"
+                className="font-medium text-[#0054a6] hover:text-[#0077e6] text-sm md:text-lg transition-colors"
               >
                 {link.name}
               </Link>
@@ -74,16 +74,6 @@ export default function Header() {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center space-x-2">
-          <Link href="#mint">
-            <Button variant="outline" size="sm" className="text-sm">
-              Mint a ScholarPass
-            </Button>
-          </Link>
-          <Link href="#sponsors">
-            <Button size="sm" className="text-sm">
-              Sponsor a Student
-            </Button>
-          </Link>
           <ConnectButton.Custom>
             {({
               account,
@@ -122,10 +112,9 @@ export default function Header() {
                         e.preventDefault();
                         openConnectModal();
                       }}
-                      className="border-[2px] flex items-center gap-2 text-[#0077e6] border-[#1e96ff] bg-background shadow-xs cursor-pointer hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1e96ff] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 rounded-md px-3 py-1 text-sm font-medium transition-all"
+                      className="border-[3px] flex items-center gap-2 text-[#f59e0b] border-[#f59e0b] bg-background shadow-xs cursor-pointer hover:bg-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f59e0b] dark:bg-input/30 dark:border-input dark:hover:bg-input/50 rounded-md px-3 py-1 text-sm font-medium transition-all"
                     >
-                      <Wallet className="w-4 h-4" />
-                      Connect Wallet
+                      Sign In
                     </button>
                   )}
                 </div>
@@ -160,24 +149,6 @@ export default function Header() {
               ))}
             </nav>
             <div className="flex flex-col gap-3">
-              <Link href="#mint">
-                <Button
-                  variant="outline"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full text-sm"
-                >
-                  Mint a ScholarPass
-                </Button>
-              </Link>
-              <Link href="#sponsors">
-                <Button
-                  variant="default"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full text-sm"
-                >
-                  Sponsor a Student
-                </Button>
-              </Link>
               <ConnectButton.Custom>
                 {({
                   account,

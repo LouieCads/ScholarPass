@@ -13,37 +13,57 @@ export default function FAQ() {
     {
       question: "What is ScholarPass?",
       answer:
-        "ScholarPass is a Web3 platform that helps Filipino students earn scholarships through their academic achievements. Students mint a ScholarPass NFT to join, submit their grades to earn a Scholar Score, and connect with sponsors who provide financial support for their education.",
+        "ScholarPass is a Web3 platform that helps Filipino students earn scholarships through their academic achievements. Students apply scholarships to sponsor-posted programs, upload verified academic achievements, and receive Scholar Score based on performances.",
     },
     {
-      question: "How do I mint a ScholarPass NFT?",
+      question: "What is blockchain and why is it used?",
       answer:
-        "To mint your ScholarPass NFT, you'll need to create an account, verify your student status with school documents, and complete the minting process through our platform. Detailed instructions are provided during the sign-up process.",
+        "Blockchain is a secure, transparent digital ledger that records information, like your Scholar Score and scholarships, so everyone can trust the data. ScholarPass uses hybrid blockchain to ensure your academic records and funds are safe and verifiable.",
+    },
+    {
+      question: "What is a hybrid blockchain and how does ScholarPass use it?",
+      answer:
+        "A hybrid blockchain combines public and private systems for extra security and efficiency. Think of it like a school library: everyone can see the book titles (public data like Scholar Scores), but only librarians can access your borrowing history (private data like personal details). ScholarPass uses this to keep your information secure while making achievements transparent.",
     },
     {
       question: "What is a Scholar Score?",
       answer:
-        "A Scholar Score is a numerical representation of your academic performance based on your submitted grades and achievements. This score is publicly visible on the blockchain and helps sponsors identify high-performing students to support.",
+        "A Scholar Score is a number that shows your academic performance based on your achievements. It’s stored on the blockchain, so sponsors can see it and choose to support high-performing students.",
+    },
+    {
+      question: "Who are the sponsors?",
+      answer:
+        "Sponsors are individuals, companies, or organizations that fund scholarships on ScholarPass. They give opportunities and donate monetary benefits to support Filipino students’ education, like paying for tuition or books.",
     },
     {
       question: "How are scholarships distributed?",
       answer:
-        "Scholarships are distributed directly to students through blockchain transactions. When a sponsor chooses to support a student, the funds are transferred as tokens that can be used for educational expenses like tuition, books, and internet access.",
+        "Students can apply for scholarship programs posted by sponsors or be directly chosen by sponsors based on their Scholar Score on the leaderboards. Funds are sent through the blockchain for educational expenses like tuition, books, or allowances.",
+    },
+    {
+      question: "What is KYC and why is it needed?",
+      answer:
+        "KYC means 'Know Your Customer.' It’s a quick process where you verify your identity with official documents, like an ID. ScholarPass uses KYC to ensure only real students receive scholarships and to prevent fraud.",
     },
     {
       question: "How can I verify my academic records?",
       answer:
-        "We have a secure verification process where you can upload official school documents and grade reports. Our team verifies these documents before your Scholar Score is updated to ensure integrity and transparency.",
+        "You upload official school documents, like certificates, to ScholarPass. Our team checks them, and universities may also verify your credentials to confirm they’re real before your Scholar Score is updated.",
+    },
+    {
+      question: "What is the role of universities?",
+      answer:
+        "Universities help verify your academic records, like grades and other credentials, to ensure they’re accurate. They don’t issue scholarships but confirm your credentials for transparency on ScholarPass.",
     },
     {
       question: "I'm not a student. How can I help?",
       answer:
-        "You can become a sponsor! Organizations, companies, and individuals can all contribute to supporting Filipino students by donating tokens or NFTs through our platform. Visit our 'Become a Sponsor' section to learn more.",
+        "You can become a sponsor! Individuals, companies, or organizations can donate tokens or NFTs to support Filipino students. Visit our 'Become a Sponsor' section to learn more.",
     },
     {
       question: "Is my personal information secure?",
       answer:
-        "Yes, we take privacy seriously. While your Scholar Score and academic achievements are public on the blockchain, your personal details remain protected. We use encryption and secure data handling practices to safeguard your information.",
+        "Yes, your privacy is protected. Your Scholar Score and achievements are public on the blockchain, but personal details are kept private using encryption and secure data practices.",
     },
   ];
 
