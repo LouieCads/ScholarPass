@@ -44,14 +44,14 @@ export default function HowItWorks() {
       description: "Submit your academic transcripts, certificates, awards, and achievements to build your credentials."
     },
     {
-      icon: <Trophy className="w-10 h-10" style={{ color: "#2563eb" }} />,
-      title: "Get Ranked",
-      description: "Appear on our public leaderboard based on your academic performance and achievements for sponsors to discover."
-    },
-    {
       icon: <GraduationCap className="w-10 h-10" style={{ color: "#2563eb" }} />,
       title: "Receive Scholarships",
       description: "Apply to programs or get directly contacted by sponsors who want to support your educational journey."
+    },
+    {
+      icon: <Trophy className="w-10 h-10" style={{ color: "#2563eb" }} />,
+      title: "Get Ranked",
+      description: "Appear on our public leaderboard based on your academic performance and achievements for sponsors to discover."
     }
   ];
 
